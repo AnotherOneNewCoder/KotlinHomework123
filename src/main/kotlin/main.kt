@@ -9,10 +9,14 @@ fun main() {
     val scanner = Scanner(System.`in`)
     val discount: Int = 10000
     val discountPercent = 5
-    var regularCustome: Boolean
+    var regularCustomer: Boolean = false
 
 
     while (true){
+        println("Если постоянный покупатель введите: 1")
+        val yesOrNo = scanner.nextInt()
+        if (yesOrNo == 1)
+            regularCustomer = true
         println("Введите сумму покупки: ")
         var amount = scanner.nextDouble() * 100
         if (amount < 0)
@@ -22,13 +26,24 @@ fun main() {
         }
         else if (amount > 100100 && amount < 1000001) {
             amount -= discount
-            println("Окончательная сумма после скидки составит: ${amount /100} рублей, скидка: ${discount/100} рублей")
+            if (regularCustomer){
+                amount *= 0.99
+                println("Окончательная сумма после скидки составит: ${amount /100} рублей, скидка: ${discount/100} рублей")
+            } else
+                println("Окончательная сумма после скидки составит: ${amount /100} рублей, скидка: ${discount/100} рублей")
         }
         else {
             val discountP = amount / 100 * discountPercent
             amount -= discountP
-            amount/=100
-            println("Окончательная сумма после скидки составит: $amount рублей, скидка: ${discountP / 100} рублей")
+            if (regularCustomer) {
+                val onePercent = amount * 0.01
+                amount *= 0.99
+                amount /= 100
+                println("Окончательная сумма после скидки составит: $amount рублей, скидка: ${(discountP + onePercent) / 100} рублей")
+            } else {
+                amount /= 100
+                println("Окончательная сумма после скидки составит: $amount рублей, скидка: ${discountP / 100} рублей")
+            }
         }
     }
 }
