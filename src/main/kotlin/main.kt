@@ -20,13 +20,14 @@ fun main() {
             println("Окончательная сумма составит: ${amount /100} рублей")
         }
         else if (amount > 100100 && amount < 1000001) {
-            amount -= discount 
-            println("Окончательная сумма после скидки составит: ${amount /100} рублей, скидка: $discount")
+            amount -= discount
+            println("Окончательная сумма после скидки составит: ${amount /100} рублей, скидка: ${discount/100} рублей")
         }
         else {
-            amount -= (amount / 100 * discountPercent)
+            val discountP = amount / 100 * discountPercent
+            amount -= discountP
             amount/=100
-            println("Окончательная сумма после скидки составит: $amount рублей, скидка: $discountPercent")
+            println("Окончательная сумма после скидки составит: $amount рублей, скидка: ${discountP / 100} рублей")
         }
     }
 }
