@@ -15,12 +15,10 @@ fun main() {
     while (true){
         println("Если постоянный покупатель введите: 1")
         val yesOrNo = scanner.nextInt()
-        if (yesOrNo == 1)
-            regularCustomer = true
+        if (yesOrNo == 1) regularCustomer = true
         println("Введите сумму покупки: ")
         var amount = scanner.nextDouble() * 100
-        if (amount < 0)
-            println("Сумма не может быть отрицательной!")
+        if (amount < 0) println("Сумма не может быть отрицательной!")
         else if (amount > 0 && amount < 100100) {
             println("Окончательная сумма составит: ${amount /100} рублей")
         }
