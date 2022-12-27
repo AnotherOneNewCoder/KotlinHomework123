@@ -9,6 +9,7 @@ fun main() {
     val scanner = Scanner(System.`in`)
     val discount: Int = 10000
     val discountPercent = 5
+    var regularCustome: Boolean
 
 
     while (true){
