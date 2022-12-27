@@ -7,6 +7,22 @@ import java.util.Scanner
 
 fun main() {
     val scanner = Scanner(System.`in`)
-    val discount = 1000
+    val discount: Int = 1000
     val discountPercent = 5
+
+
+    while (true){
+        var amount = scanner.nextDouble() * 100
+        if (amount < 0)
+            println("Сумма не может быть отрицательной!")
+        else if (amount > 0 && amount < 1000001) {
+            amount -= discount /100
+            println("Окончательная сумма после скидки составит: $amount рублей")
+        }
+        else {
+            amount -= (amount / 100 * discountPercent)
+            amount/=100
+            println("Окончательная сумма после скидки составит: $amount рублей")
+        }
+    }
 }
